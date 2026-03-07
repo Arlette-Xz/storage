@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cdn.nexy.space</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #d1d1d1;
+            font-family: monospace;
+            padding: 20px;
+            margin: 0;
+            font-size: 14px;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<pre id="cdn-data"></pre>
+
+<script>
+    const profile = {
+        "owner": "Arlette Xz",
+        "developer": "Nexy",
+        "status": "private",
+        "msg": "Nexy Private CDN",
+        "domain": "cdn.nexy.space",
+        "access": "Restricted to owner",
+        "endpoints": [
+            {
+                "path": "/img/*",
+                "description": "My personal storage",
+                "method": "GET"
+            },
+            {
+                "path": "/vault",
+                "description": "Encrypted assets",
+                "method": "POST"
+            }
+        ]
+    };
+
+    document.getElementById('cdn-data').textContent = JSON.stringify(profile, null, 2);
+</script>
+
+</body>
+</html>
