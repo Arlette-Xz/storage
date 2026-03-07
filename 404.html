@@ -25,16 +25,17 @@
 <pre id="error-data"></pre>
 
 <script>
-    const errorResponse = {
+    const error = {
         "status": 404,
         "error": "Not Found",
-        "msg": "The requested resource does not exist on this CDN",
+        "msg": "The requested resource does not exist",
         "owner": "Arlette Xz",
-        "dev": "Nexy",
-        "hint": "Check the URL or return to cdn.nexy.space"
+        "developer": "Nexy",
+        "domain": "cdn.nexy.space",
+        "action": "Please check the URL or contact the owner"
     };
 
-    document.getElementById('error-data').textContent = JSON.stringify(errorResponse, null, 2);
+    document.getElementById('error-data').textContent = JSON.stringify(error, null, 2);
 </script>
 
 </body>
