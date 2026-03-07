@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Not Found</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #d1d1d1;
+            font-family: monospace;
+            padding: 20px;
+            margin: 0;
+            font-size: 14px;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<pre id="error-data"></pre>
+
+<script>
+    const errorResponse = {
+        "status": 404,
+        "error": "Not Found",
+        "msg": "The requested resource does not exist on this CDN",
+        "owner": "Arlette Xz",
+        "dev": "Nexy",
+        "hint": "Check the URL or return to cdn.nexy.space"
+    };
+
+    document.getElementById('error-data').textContent = JSON.stringify(errorResponse, null, 2);
+</script>
+
+</body>
+</html>
