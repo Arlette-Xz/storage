@@ -1,42 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Not Found</title>
+    <title>404 - Página no encontrada | Sventy Store</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #000000;
-            color: #d1d1d1;
-            font-family: monospace;
-            padding: 20px;
-            margin: 0;
-            font-size: 14px;
+        :root {
+            --blue-accent: #00a2ff;
+            --blue-soft: #e6f6ff;
+            --border: #f2f2f2;
+            --text-dark: #2d2d2d;
+            --text-gray: #7d7d7d;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
         }
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin: 0;
+
+        body.dark-mode {
+            --bg-body: #000000;
+            --bg-card: #171717;
+            --text-dark: #ffffff;
+            --text-gray: #b0b0b0;
+            --border: #333333;
+            --blue-soft: #112233;
+        }
+
+        @keyframes fadeInScale { 
+            from { opacity: 0; transform: scale(0.95); } 
+            to { opacity: 1; transform: scale(1); } 
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: 0.25s ease; }
+
+        html, body { 
+            width: 100%;
+            height: 100vh;
+            background: var(--bg-body); 
+            color: var(--text-dark); 
+            font-family: 'Quicksand', sans-serif; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* CONFIGURACIÓN DEL PANEL INTERNO */
+        .error-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 40px 30px;
+            border-radius: 28px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        /* ICONO FLOTANTE DE ERROR */
+        .error-icon-box {
+            width: 90px;
+            height: 90px;
+            background: var(--blue-soft);
+            color: var(--blue-accent);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            margin: 0 auto 25px auto;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .error-container h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--text-dark);
+            letter-spacing: -2px;
+            margin-bottom: 5px;
+        }
+
+        .error-container h1 span {
+            color: var(--blue-accent);
+        }
+
+        .error-container h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .error-container p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* BOTÓN DE RETORNO ESTILO SVENTY */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--text-dark);
+            color: var(--bg-card);
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        body.dark-mode .btn-back {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* TOGGLE DE MODO OSCURO FLOTANTE */
+        .theme-toggle-floating {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .theme-toggle-floating:hover {
+            color: var(--blue-accent);
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
-<pre id="error-data"></pre>
+    <!-- CONTROL DE TEMA INCRUSTADO -->
+    <div class="theme-toggle-floating" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </div>
 
-<script>
-    const error = {
-        "status": 404,
-        "error": "Not Found",
-        "msg": "The requested resource does not exist",
-        "owner": "Arlette Xz",
-        "developer": "Nexy",
-        "domain": "cdn.nexy.space",
-        "action": "Please check the URL or contact the owner"
-    };
+    <!-- TARJETA PRINCIPAL 404 -->
+    <div class="error-container">
+        <div class="error-icon-box">
+            <i class="fas fa-ghost"></i>
+        </div>
+        <h1>4<span>0</span>4</h1>
+        <h2>Ruta no encontrada</h2>
+        <p>El enlace al que intentas acceder no existe, se ha movido o ha expirado temporalmente.</p>
+        
+        <a href="/" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver al Catálogo
+        </a>
+    </div>
 
-    document.getElementById('error-data').textContent = JSON.stringify(error, null, 2);
-</script>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('sventy-theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('sventy-theme', 'light');
+            }
+        }
 
+        // Leer preferencia guardada al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('sventy-theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+    </script>
 </body>
 </html>
